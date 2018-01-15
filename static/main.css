@@ -36,3 +36,6 @@ html, body {
 #map .add-modal label{
     border: 1px solid transparent;
 }
+.legend img {
+    vertical-align: middle;
+}

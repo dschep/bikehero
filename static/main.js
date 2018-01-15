@@ -91,6 +91,14 @@ var helpModal = function(ev) {
   top right corner of the map. Then tap anywhere on the map to add a stand or pump at
   that location. A window will popup asking you if it is a fixit stand or a pump. Make
     your selection and click submit. Your addition is now on the BikeHero map!
+  <h3>Legend</h3>
+  <p class="legend">
+  <img src="fixit.svg"> <a href="https://www.google.com/search?tbm=isch&q=fixit%20stand">Fixit stands</a>
+  <br>
+  <img src="pump+shop.svg"> Bike pump outside a bike shop
+  <br>
+  <img src="pump.svg"> Other pulicly accessible bike pump
+  </p>
   <h3>Source</h3>
   <p>BikeHero is open source and on <a href="https://github.com/dschep/bikehero">Github</a>.</p>
   `;
