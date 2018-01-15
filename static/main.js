@@ -91,6 +91,8 @@ var helpModal = function(ev) {
   top right corner of the map. Then tap anywhere on the map to add a stand or pump at
   that location. A window will popup asking you if it is a fixit stand or a pump. Make
     your selection and click submit. Your addition is now on the BikeHero map!
+  <h3>Source</h3>
+  <p>BikeHero is open source and on <a href="https://github.com/dschep/bikehero">Github</a>.</p>
   `;
   map.openModal({element: modalNode});
   return false;
