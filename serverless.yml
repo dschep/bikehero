@@ -1,0 +1,89 @@
+service:
+  name: serverless-python-template
+  # awsKmsKeyArn: ''
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-east-1
+
+#  iamRoleStatements:
+#    - Effect: Allow
+#      Action: ssm:GetParameter
+#      Resource:
+#        'Fn::Join':
+#          - ':'
+#          - - 'arn:aws:ssm'
+#            - Ref: 'AWS::Region'
+#            - Ref: 'AWS::AccountId'
+#            - parameter/${self:custom.service.name}/${self:custom.stage}/*
+#    - Effect: Allow
+#      Action:  kms:Decrypt
+#      Resource: ${self:custom.service.awsKmsKeyArn}
+
+
+  environment:
+    STAGE: ${self:custom.stage}
+
+package:
+  include:
+    - handler.py
+  exclude:
+    - '**/*'
+
+custom:
+  stage: ${opt:stage, self:provider.stage} # shortcut for current stage
+  service: bikehero # workaround for ${self:service}
+
+plugins:
+  - serverless-python-requirements
+
+functions:
+  hello:
+    handler: handler.hello
+
+#    The following are a few example events you can configure
+#    NOTE: Please make sure to change your handler code to work with those events
+#    Check the event documentation for details
+#    events:
+#      - http:
+#          path: users/create
+#          method: get
+#      - s3: ${env:BUCKET}
+#      - schedule: rate(10 minutes)
+#      - sns: greeter-topic
+#      - stream: arn:aws:dynamodb:region:XXXXXX:table/foo/stream/1970-01-01T00:00:00.000
+#      - alexaSkill
+#      - alexaSmartHome: amzn1.ask.skill.xx-xx-xx-xx
+#      - iot:
+#          sql: "SELECT * FROM 'some_topic'"
+#      - cloudwatchEvent:
+#          event:
+#            source:
+#              - "aws.ec2"
+#            detail-type:
+#              - "EC2 Instance State-change Notification"
+#            detail:
+#              state:
+#                - pending
+#      - cloudwatchLog: '/aws/lambda/hello'
+#      - cognitoUserPool:
+#          pool: MyUserPool
+#          trigger: PreSignUp
+
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"
