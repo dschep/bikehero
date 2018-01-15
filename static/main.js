@@ -1,6 +1,7 @@
 API_ROOT = 'https://g4k8bjzsp8.execute-api.us-east-1.amazonaws.com/dev'
 
 const map = L.map('map').setView([38.918, -77.040], 11);
+let userLocation;
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -141,6 +142,22 @@ fetch(`${API_ROOT}/stands`, {cors: true})
                     iconSize:     [48, 48],
                     iconAnchor:   [24, 24]
                 })
+            }).on('click', e => {
+              // create geoJson feature just to get bounds of 2 points
+              const bounds = L.geoJson({
+                type: 'FeatureCollection',
+                'features': [
+                  {
+                    type: 'Point',
+                    coordinates: [userLocation.lng, userLocation.lat],
+                  },
+                  {
+                    type: 'Point',
+                    coordinates: [e.latlng.lng, e.latlng.lat],
+                  },
+                ],
+              }).getBounds();
+              map.fitBounds(bounds);
             });
         }
 
@@ -150,4 +167,5 @@ fetch(`${API_ROOT}/stands`, {cors: true})
 const lc = L.control.locate({
     locateOptions: { maxZoom: 14 }
 }).addTo(map);
+map.on('locationfound', e => {userLocation = e.latlng;});
 lc.start();
