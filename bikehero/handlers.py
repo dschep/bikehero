@@ -54,20 +54,3 @@ def add_stand(event, context):
                      values (:location, :stand_type, :source_type)
                      """, **asdict(stand))
     return stand.geojson
-
-@database
-def import_old_bikehero(event, context):
-    resp = requests.get('https://bikehero.io/api/stands/')
-
-    context.db.query("delete from stands where source_type='api'")
-
-    for point in resp.json()['features']:
-        fixit_stand = Stand(
-            location=Point(*point['geometry']['coordinates']),
-            stand_type=point['properties']['style'],
-            source_type='api',
-        )
-        context.db.query("""
-                         insert into stands (location, stand_type, source_type)
-                         values (:location, :stand_type, :source_type)
-                         """, **asdict(fixit_stand))

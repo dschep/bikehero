@@ -61,6 +61,3 @@ functions:
 
   scrape_dero:
     handler: bikehero/handlers.scrape_dero_fixit_map
-
-  import_old_bikehero:
-    handler: bikehero/handlers.import_old_bikehero
