@@ -77,8 +77,46 @@ var AddStandControl = L.Control.extend({
     }
 });
 
-map.addControl(new AddStandControl());
+var helpModal = function(ev) {
+  if (ev) ev.preventDefault();
+  document.cookie = 'viewedHelp=true';
+  var modalNode = L.DomUtil.create('div', 'help-modal');
+  modalNode.innerHTML = `
+  <h2>About BikeHero</h2>
+  <p>BikeHero is a map of fixit stands and publicly accessible bike pumps. Some of the
+  fixit stands were imported from a manufacturers map of where their stands are
+  installed. The others (and all the pumps) are added by users!</p>
+  <h3>Adding Stands & Pumps</h3>
+  <p>To add a fixit stand or a pump, tap the plus(+) sign in the
+  top right corner of the map. Then tap anywhere on the map to add a stand or pump at
+  that location. A window will popup asking you if it is a fixit stand or a pump. Make
+    your selection and click submit. Your addition is now on the BikeHero map!
+  `;
+  map.openModal({element: modalNode});
+  return false;
+}
 
+var HelpControl = L.Control.extend({
+    options: {
+        position: 'topright'
+    },
+
+    onAdd: function (map) {
+        // create the control container with a particular class name
+        var container = L.DomUtil.create('div', 'leaflet-bar add-control');
+
+        container.innerHTML = '<a href="#"><i class="fa fa-question fa-2x"</a>';
+
+        container.onclick = helpModal;
+
+        return container;
+    }
+});
+
+map.addControl(new HelpControl());
+map.addControl(new AddStandControl());
+if (!document.cookie)
+  helpModal()
 
 fetch(`${API_ROOT}/stands`, {cors: true})
 .then(function(resp) {
