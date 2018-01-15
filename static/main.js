@@ -1,19 +1,19 @@
 API_ROOT = 'https://g4k8bjzsp8.execute-api.us-east-1.amazonaws.com/dev'
 
-var map = L.map('map').setView([38.918, -77.040], 11);
+const map = L.map('map').setView([38.918, -77.040], 11);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-var AddStandControl = L.Control.extend({
+const AddStandControl = L.Control.extend({
     options: {
         position: 'topright'
     },
 
     onAdd: function (map) {
         // create the control container with a particular class name
-        var container = L.DomUtil.create('div', 'leaflet-bar add-control');
+        const container = L.DomUtil.create('div', 'leaflet-bar add-control');
 
         container.innerHTML = '<a href="#"><i class="fa fa-plus-square-o fa-2x"</a>';
 
@@ -32,7 +32,7 @@ var AddStandControl = L.Control.extend({
 
         map.on('click', function(ev) {
             if (!map.adding || ev.originalEvent.defaultPrevented) return;
-            var modalNode = L.DomUtil.create('div', 'add-modal');
+            const modalNode = L.DomUtil.create('div', 'add-modal');
             modalNode.innerHTML = `
             <h2>Is this a Fixit-style stand or a Pump?</h2>
             <form><p>
@@ -77,10 +77,10 @@ var AddStandControl = L.Control.extend({
     }
 });
 
-var helpModal = function(ev) {
+const helpModal = function(ev) {
   if (ev) ev.preventDefault();
   document.cookie = 'viewedHelp=true';
-  var modalNode = L.DomUtil.create('div', 'help-modal');
+  const modalNode = L.DomUtil.create('div', 'help-modal');
   modalNode.innerHTML = `
   <h2>About BikeHero</h2>
   <p>BikeHero is a map of fixit stands and publicly accessible bike pumps. Some of the
@@ -106,14 +106,14 @@ var helpModal = function(ev) {
   return false;
 }
 
-var HelpControl = L.Control.extend({
+const HelpControl = L.Control.extend({
     options: {
         position: 'topright'
     },
 
     onAdd: function (map) {
         // create the control container with a particular class name
-        var container = L.DomUtil.create('div', 'leaflet-bar add-control');
+        const container = L.DomUtil.create('div', 'leaflet-bar add-control');
 
         container.innerHTML = '<a href="#"><i class="fa fa-question fa-2x"</a>';
 
@@ -147,7 +147,7 @@ fetch(`${API_ROOT}/stands`, {cors: true})
     }).addTo(map);
 });
 
-var lc = L.control.locate({
+const lc = L.control.locate({
     locateOptions: { maxZoom: 14 }
 }).addTo(map);
 lc.start();
