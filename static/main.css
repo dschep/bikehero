@@ -1,0 +1,38 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+#map .leaflet-control-locate .fa {
+    margin-top: 6px;
+}
+#map.leaflet-touch .add-control .fa {
+    margin-top: 3px;
+}
+#map .add-control .fa {
+    margin-top: 1px;
+}
+#map .add-control .fa-plus-square {
+    color: #2074B6;
+}
+#map .add-modal form label {
+    display: block;
+}
+#map .add-modal form img {
+    vertical-align: middle;
+}
+#map .add-modal input[type=radio] {
+    display: none;
+}
+#map .add-modal input[type=radio]:checked + label{
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(0,0,0,.25);
+}
+#map .add-modal label{
+    border: 1px solid transparent;
+}
