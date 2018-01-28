@@ -171,3 +171,7 @@ const lc = L.control.locate({
 }).addTo(map);
 map.on('locationfound', e => {userLocation = e.latlng;});
 lc.start();
+
+
+if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js')
+  .then(function() { console.log('Service Worker Registered'); });
