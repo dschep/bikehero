@@ -3,9 +3,11 @@ const API_ROOT = 'https://g4k8bjzsp8.execute-api.us-east-1.amazonaws.com/dev';
 const map = L.map('map').setView([38.918, -77.040], 11);
 let userLocation;
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
+  attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  apikey: '43a3528946814e018e2667b156d87992',
+  maxZoom: 22
+}).addTo(map)
 
 const AddStandControl = L.Control.extend({
   options: {
