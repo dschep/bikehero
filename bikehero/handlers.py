@@ -23,7 +23,7 @@ def scrape_dero_fixit_map(event, context):
 
     for lat, lon in coords:
         fixit_stand = Stand(
-            location=Point(float(lon), float(lat)),
+            location=Point(float(lon), float(lat), srid=4326),
             stand_type='fixit',
             source_type='scraper',
         )
@@ -45,7 +45,7 @@ def get_stands(event, context):
 @database
 def add_stand(event, context):
     stand = Stand(
-        location=Point(event['body']['lng'], event['body']['lat']),
+        location=Point(event['body']['lng'], event['body']['lat'], srid=4326),
         stand_type=event['body']['stand_type'],
         source_type='api',
     )

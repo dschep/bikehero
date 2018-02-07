@@ -1,6 +1,6 @@
 service:
   name: bikehero
-  awsKmsKeyArn: arn:aws:kms:us-east-1:704903784842:alias/bikehero-sls
+  awsKmsKeyArn: arn:aws:kms:us-east-1:704903784842:key/49b8e145-0e10-4e99-a899-c4cdfe07880c
 
 provider:
   name: aws
@@ -46,6 +46,7 @@ plugins:
 functions:
   get_stands:
     handler: bikehero/handlers.get_stands
+    timeout: 30
     events:
       - http:
           path: stands

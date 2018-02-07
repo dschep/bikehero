@@ -8,9 +8,12 @@ html, body {
     width: 100%;
 }
 
-#map .leaflet-control-locate .fa {
-    margin-top: 6px;
+/* tweak leaflet locate control style */
+.leaflet-control-locate a {
+    padding: 0 !important;
 }
+
+/* custom components */
 #map.leaflet-touch .add-control .fa {
     margin-top: 3px;
 }
