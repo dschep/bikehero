@@ -45,10 +45,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:e5f1a8e2d3aa5211acef38c5f7f94d8cedb34de10fc7711a0557ea206d6dcef5",
-                "sha256:e15b0e0d770711dee9965f47bf962e7a2146861297728d859db1048368ce0e8d"
+                "sha256:83197c3eb264b202109c65e4403442252938fbc99a28e44de8f76d27a7e73ea8",
+                "sha256:a80f926d0b5d0c60107b95f03ad946716620b733469d9ec5e976dd81363988d6"
             ],
-            "version": "==1.8.39"
+            "version": "==1.8.40"
         },
         "certifi": {
             "hashes": [
@@ -113,10 +113,10 @@
         },
         "lambda-decorators": {
             "hashes": [
-                "sha256:28b27af621f4756366567ffb8eceeabc29288acafdff0d4250518eecdcd45e97",
-                "sha256:5b63c020eeb6946e4d0b85c03ac91b8483271cfb27ad7abc1b94f816e04299c7"
+                "sha256:1bc738b53a144b0775ee9a68a7b83e1c857230fb9f72e1416bd72fb70a03a8ad",
+                "sha256:7651fc6a825c9c92f689d2d6f1a7313bf98a6d2a1a896ad431e97eb06f765a58"
             ],
-            "version": "==0.1b3"
+            "version": "==0.1"
         },
         "odfpy": {
             "hashes": [
