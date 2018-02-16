@@ -38,17 +38,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:dd6e8736d65144fe2f58c8a4ebb6c81d31d84c611036a822dd78ed359cff2d28",
-                "sha256:97271a09351eb899f5fddcd638e40e60da5f43b640d06b03772835ff266edb6a"
+                "sha256:9312b3aa24888ab6436fcc41c56e2231dfdd1864879dabaac042256cbe292dbc",
+                "sha256:f773243adc1d2264fe87b75fa2f5e696ab042ac7a9bf0cae8a2045e32e325044"
             ],
-            "version": "==1.5.27"
+            "version": "==1.5.30"
         },
         "botocore": {
             "hashes": [
-                "sha256:b8da42fd581923a32180b3dbf96440bd1e99239eea9c5bc9c893dbee48814f5e",
-                "sha256:57401c4377a6fabfa18dd9fe7ee80692aa19de4ee1d57dff4da519adec1474ea"
+                "sha256:2b3761dfe3a2a388859ee2663c8f0183746b83f4ac23e8cdb164012bbbe31f28",
+                "sha256:02bdae93a167bbbd8053099300f14dea648abaa2031ffd29b4733ed253ed2458"
             ],
-            "version": "==1.8.41"
+            "version": "==1.8.44"
         },
         "certifi": {
             "hashes": [
@@ -212,10 +212,10 @@
         },
         "s3transfer": {
             "hashes": [
-                "sha256:23c156ca4d64b022476c92c44bf938bef71af9ce0dcd8fd6585e7bce52f66e47",
-                "sha256:10891b246296e0049071d56c32953af05cea614dca425a601e4c0be35990121e"
+                "sha256:c7a9ec356982d5e9ab2d4b46391a7d6a950e2b04c472419f5fdec70cc0ada72f",
+                "sha256:90dc18e028989c609146e241ea153250be451e05ecc0c2832565231dacdf59c1"
             ],
-            "version": "==0.1.12"
+            "version": "==0.1.13"
         },
         "six": {
             "hashes": [
