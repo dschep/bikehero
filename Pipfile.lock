@@ -38,17 +38,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:dd6e8736d65144fe2f58c8a4ebb6c81d31d84c611036a822dd78ed359cff2d28",
-                "sha256:97271a09351eb899f5fddcd638e40e60da5f43b640d06b03772835ff266edb6a"
+                "sha256:ae0ae1c11f4a78bd69a43c8b8a9bdb6569c3b497331f5892cc3cdb95f6f7f42b",
+                "sha256:65d7b85d213b63f4540b259b5a9780db8b0cbdcb5d748545d1eb19992910587b"
             ],
-            "version": "==1.5.27"
+            "version": "==1.5.31"
         },
         "botocore": {
             "hashes": [
-                "sha256:b8da42fd581923a32180b3dbf96440bd1e99239eea9c5bc9c893dbee48814f5e",
-                "sha256:57401c4377a6fabfa18dd9fe7ee80692aa19de4ee1d57dff4da519adec1474ea"
+                "sha256:80ccf6d2145a19b2b0354df7522ab7f8ef4e2793b5e187ea10cb5c4d8cbbd6a3",
+                "sha256:8f91b648a216dc945783d1539c013fc08a9e65ecc4fc5aae017bdd5961fd3468"
             ],
-            "version": "==1.8.41"
+            "version": "==1.8.45"
         },
         "certifi": {
             "hashes": [
@@ -212,10 +212,10 @@
         },
         "s3transfer": {
             "hashes": [
-                "sha256:23c156ca4d64b022476c92c44bf938bef71af9ce0dcd8fd6585e7bce52f66e47",
-                "sha256:10891b246296e0049071d56c32953af05cea614dca425a601e4c0be35990121e"
+                "sha256:c7a9ec356982d5e9ab2d4b46391a7d6a950e2b04c472419f5fdec70cc0ada72f",
+                "sha256:90dc18e028989c609146e241ea153250be451e05ecc0c2832565231dacdf59c1"
             ],
-            "version": "==0.1.12"
+            "version": "==0.1.13"
         },
         "six": {
             "hashes": [
@@ -226,9 +226,9 @@
         },
         "sqlalchemy": {
             "hashes": [
-                "sha256:64b4720f0a8e033db0154d3824f5bf677cf2797e11d44743cf0aebd2a0499d9d"
+                "sha256:9e9ec143e2e246f385cfb2de8daa89d2fa466279addcb7be9e102988fdf33d24"
             ],
-            "version": "==1.2.2"
+            "version": "==1.2.3"
         },
         "tablib": {
             "hashes": [
