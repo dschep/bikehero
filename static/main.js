@@ -1,6 +1,8 @@
 const API_ROOT = 'https://g4k8bjzsp8.execute-api.us-east-1.amazonaws.com/dev';
 
-const map = L.map('map').setView([38.918, -77.040], 11);
+const map = L.map('map').setView(
+  JSON.parse(localStorage.getItem('location')) || [38.918, -77.040],
+  localStorage.getItem('zoom') || 11);
 let userLocation;
 
 L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
@@ -172,6 +174,18 @@ const lc = L.control.locate({
 }).addTo(map);
 map.on('locationfound', e => {userLocation = e.latlng;});
 lc.start();
+
+map.on('moveend', e => {
+  const c = e.target.getCenter()
+  if (c)
+    localStorage.setItem('location', JSON.stringify([c.lat, c.lng]));
+});
+
+map.on('zoomend', e => {
+  const z = e.target.getZoom()
+  if (z)
+    localStorage.setItem('zoom', z);
+});
 
 
 if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js')
