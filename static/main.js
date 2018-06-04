@@ -85,7 +85,7 @@ const AddStandControl = L.Control.extend({
 
 const helpModal = function(ev) {
   if (ev) ev.preventDefault();
-  document.cookie = 'viewedHelp=true';
+  localStorage.setItem('viewedHelp', 'true');
   const modalNode = L.DomUtil.create('div', 'help-modal');
   modalNode.innerHTML = `
   <h2>About BikeHero</h2>
@@ -131,7 +131,7 @@ const HelpControl = L.Control.extend({
 
 map.addControl(new HelpControl());
 map.addControl(new AddStandControl());
-if (!document.cookie)
+if (!JSON.parse(localStorage.getItem('viewedHelp')))
   helpModal();
 
 fetch(`${API_ROOT}/stands`, {cors: true})
