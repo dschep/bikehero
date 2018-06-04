@@ -148,6 +148,7 @@ fetch(`${API_ROOT}/stands`, {cors: true})
             iconAnchor:   [24, 24]
           })
         }).on('click', e => {
+          if (userLocation) {
         // create geoJson feature just to get bounds of 2 points
           const bounds = L.geoJson({
             type: 'FeatureCollection',
@@ -163,6 +164,9 @@ fetch(`${API_ROOT}/stands`, {cors: true})
             ],
           }).getBounds();
           map.fitBounds(bounds);
+          } else {
+            map.panTo(e.latlng);
+          }
         });
       }
 
