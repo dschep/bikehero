@@ -44,7 +44,8 @@ const AddStandControl = L.Control.extend({
       <input id="r-pump" type="radio" name="style" value="pump"><label for="r-pump"><img src="pump.svg"> Pump</label>
       </p><button type="submit">Submit</button></form>
       `;
-      L.DomEvent.on(modalNode.querySelector('button[type=submit]'), 'click', function() {
+      L.DomEvent.on(modalNode.querySelector('button[type=submit]'), 'click', function(ev2) {
+        ev2.preventDefault();
         modalNode.querySelector('[type=submit]').disabled = 'disabled';
         modalNode.querySelector('[type=submit]').innerHTML = '<i class="fa fa-spinner fa-spin"></i> Submit</i>';
         fetch(`${API_ROOT}/stand`, {
