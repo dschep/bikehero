@@ -5,6 +5,6 @@
   "dependencies": {},
   "devDependencies": {
     "serverless-python-requirements": "^4.0.1",
-    "serverless-finch": "^2.1.2"
+    "serverless-finch": "^2.2.0"
   }
 }
