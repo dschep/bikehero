@@ -16,7 +16,34 @@ L.tileLayer(
   }
 ).addTo(map);
 
-const markers = L.layerGroup([]).addTo(map);
+const markers = L.markerClusterGroup({
+  iconCreateFunction: function (cluster) {
+    const markerIconUrls = cluster.getAllChildMarkers().map(
+      marker => {
+        if (!['fixit.svg', 'pump.svg', 'pump+shop.svg'].includes(marker.options.icon.options.iconUrl))
+          debugger
+        return marker.options.icon.options.iconUrl;
+      });
+    let icon;
+    if (markerIconUrls.includes('fixit.svg'))
+      icon = 'fixit';
+    else if (markerIconUrls.includes('pump.svg'))
+      icon = 'pump';
+    else if (markerIconUrls.includes('pump+shop.svg'))
+      icon = 'pump';
+    else
+      debugger;
+
+
+    return new L.icon({
+                  iconUrl: `${icon}.svg`,
+                  iconSize: [48, 48],
+                  iconAnchor: [24, 24]
+                });
+		return new L.DivIcon({ html: '<div><span></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+  },
+  maxClusterRadius: 15,
+}).addTo(map);
 
 const AddStandControl = L.Control.extend({
   options: {
