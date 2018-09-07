@@ -2,9 +2,27 @@
   "name": "bikehero",
   "description": "",
   "version": "0.1.0",
+  "scripts": {
+    "lint": "eslint **/*.js && prettier -l **/*.js || (echo need formatting ; exit 1)",
+    "format": "prettier --write **/*.js"
+  },
   "dependencies": {},
   "devDependencies": {
     "serverless-python-requirements": "^4.0.1",
-    "serverless-finch": "^2.1.2"
+    "serverless-finch": "^2.1.2",
+    "eslint": "*",
+    "prettier": "*"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true,
+      "es6": true
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "parser": "babylon"
   }
 }

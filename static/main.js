@@ -1,58 +1,53 @@
-const API_ROOT = "https://g4k8bjzsp8.execute-api.us-east-1.amazonaws.com/dev";
+const API_ROOT = 'https://g4k8bjzsp8.execute-api.us-east-1.amazonaws.com/dev';
 
-const map = L.map("map").setView(
-  JSON.parse(localStorage.getItem("location")) || [38.918, -77.04],
-  localStorage.getItem("zoom") || 11
+const map = L.map('map').setView(
+  JSON.parse(localStorage.getItem('location')) || [38.918, -77.04],
+  localStorage.getItem('zoom') || 11
 );
 let userLocation;
 
 L.tileLayer(
-  "https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}",
+  'https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}',
   {
     attribution:
       '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    apikey: "43a3528946814e018e2667b156d87992",
+    apikey: '43a3528946814e018e2667b156d87992',
     maxZoom: 22
   }
 ).addTo(map);
 
 const markers = L.markerClusterGroup({
-  iconCreateFunction: function (cluster) {
-    const markerIconUrls = cluster.getAllChildMarkers().map(
-      marker => {
-        if (!['fixit.svg', 'pump.svg', 'pump+shop.svg'].includes(marker.options.icon.options.iconUrl))
-          debugger
-        return marker.options.icon.options.iconUrl;
-      });
+  iconCreateFunction: function(cluster) {
+    const markerIconUrls = cluster
+      .getAllChildMarkers()
+      .map(marker => marker.options.icon.options.iconUrl);
     let icon;
-    if (markerIconUrls.includes('fixit.svg'))
-      icon = 'fixit';
-    else if (markerIconUrls.includes('pump.svg'))
-      icon = 'pump';
-    else if (markerIconUrls.includes('pump+shop.svg'))
-      icon = 'pump';
-    else
-      debugger;
-
+    if (markerIconUrls.includes('fixit.svg')) icon = 'fixit';
+    else if (markerIconUrls.includes('pump.svg')) icon = 'pump';
+    else icon = 'pump+shop';
 
     return new L.icon({
-                  iconUrl: `${icon}.svg`,
-                  iconSize: [48, 48],
-                  iconAnchor: [24, 24]
-                });
-		return new L.DivIcon({ html: '<div><span></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+      iconUrl: `${icon}.svg`,
+      iconSize: [48, 48],
+      iconAnchor: [24, 24]
+    });
+    return new L.DivIcon({
+      html: '<div><span></span></div>',
+      className: 'marker-cluster' + c,
+      iconSize: new L.Point(40, 40)
+    });
   },
-  maxClusterRadius: 15,
+  maxClusterRadius: 15
 }).addTo(map);
 
 const AddStandControl = L.Control.extend({
   options: {
-    position: "topright"
+    position: 'topright'
   },
 
   onAdd: function(map) {
     // create the control container with a particular class name
-    const container = L.DomUtil.create("div", "leaflet-bar add-control");
+    const container = L.DomUtil.create('div', 'leaflet-bar add-control');
 
     container.innerHTML =
       '<a href="#"><i class="fa fa-plus-square-o fa-2x"</a>';
@@ -61,18 +56,18 @@ const AddStandControl = L.Control.extend({
       ev.preventDefault();
       map.adding = !map.adding;
       if (map.adding) {
-        container.querySelector(".fa").classList.add("fa-plus-square");
-        container.querySelector(".fa").classList.remove("fa-plus-square-o");
+        container.querySelector('.fa').classList.add('fa-plus-square');
+        container.querySelector('.fa').classList.remove('fa-plus-square-o');
       } else {
-        container.querySelector(".fa").classList.add("fa-plus-square-o");
-        container.querySelector(".fa").classList.remove("fa-plus-square");
+        container.querySelector('.fa').classList.add('fa-plus-square-o');
+        container.querySelector('.fa').classList.remove('fa-plus-square');
       }
       return false;
     };
 
-    map.on("click", function(ev) {
+    map.on('click', function(ev) {
       if (!map.adding || ev.originalEvent.defaultPrevented) return;
-      const modalNode = L.DomUtil.create("div", "add-modal");
+      const modalNode = L.DomUtil.create('div', 'add-modal');
       modalNode.innerHTML = `
       <h2>Is this a Fixit-style stand or a Pump?</h2>
       <form><p>
@@ -82,17 +77,17 @@ const AddStandControl = L.Control.extend({
       </p><button type="submit">Submit</button></form>
       `;
       L.DomEvent.on(
-        modalNode.querySelector("button[type=submit]"),
-        "click",
+        modalNode.querySelector('button[type=submit]'),
+        'click',
         function(ev2) {
           ev2.preventDefault();
-          modalNode.querySelector("[type=submit]").disabled = "disabled";
-          modalNode.querySelector("[type=submit]").innerHTML =
+          modalNode.querySelector('[type=submit]').disabled = 'disabled';
+          modalNode.querySelector('[type=submit]').innerHTML =
             '<i class="fa fa-spinner fa-spin"></i> Submit</i>';
           fetch(`${API_ROOT}/stand`, {
-            method: "POST",
+            method: 'POST',
             body: JSON.stringify({
-              stand_type: new FormData(this.form).get("style"),
+              stand_type: new FormData(this.form).get('style'),
               lat: ev.latlng.lat,
               lng: ev.latlng.lng
             }),
@@ -126,8 +121,8 @@ const AddStandControl = L.Control.extend({
 
 const helpModal = function(ev) {
   if (ev) ev.preventDefault();
-  localStorage.setItem("viewedHelp", "true");
-  const modalNode = L.DomUtil.create("div", "help-modal");
+  localStorage.setItem('viewedHelp', 'true');
+  const modalNode = L.DomUtil.create('div', 'help-modal');
   modalNode.innerHTML = `
   <h2>About BikeHero</h2>
   <p>BikeHero is a map of fixit stands and publicly accessible bike pumps. Some of the
@@ -155,12 +150,12 @@ const helpModal = function(ev) {
 
 const HelpControl = L.Control.extend({
   options: {
-    position: "topright"
+    position: 'topright'
   },
 
   onAdd: function() {
     // create the control container with a particular class name
-    const container = L.DomUtil.create("div", "leaflet-bar add-control");
+    const container = L.DomUtil.create('div', 'leaflet-bar add-control');
 
     container.innerHTML = '<a href="#"><i class="fa fa-question fa-2x"</a>';
 
@@ -172,7 +167,7 @@ const HelpControl = L.Control.extend({
 
 map.addControl(new HelpControl());
 map.addControl(new AddStandControl());
-if (!JSON.parse(localStorage.getItem("viewedHelp"))) helpModal();
+if (!JSON.parse(localStorage.getItem('viewedHelp'))) helpModal();
 
 const geoJsonToMarkers = geoJson => {
   const markersGeoJsonLayer = L.geoJSON(geoJson, {
@@ -183,18 +178,18 @@ const geoJsonToMarkers = geoJson => {
           iconSize: [48, 48],
           iconAnchor: [24, 24]
         })
-      }).on("click", e => {
+      }).on('click', e => {
         if (userLocation) {
           // create geoJson feature just to get bounds of 2 points
           const bounds = L.geoJson({
-            type: "FeatureCollection",
+            type: 'FeatureCollection',
             features: [
               {
-                type: "Point",
+                type: 'Point',
                 coordinates: [userLocation.lng, userLocation.lat]
               },
               {
-                type: "Point",
+                type: 'Point',
                 coordinates: [e.latlng.lng, e.latlng.lat]
               }
             ]
@@ -211,12 +206,12 @@ const geoJsonToMarkers = geoJson => {
 };
 
 const saveGeoJson = geoJson => {
-  localStorage.setItem("geoJson", JSON.stringify(geoJson));
+  localStorage.setItem('geoJson', JSON.stringify(geoJson));
   return geoJson;
 };
 
 const restoreGeoJson = () => {
-  const geoJson = localStorage.getItem("geoJson");
+  const geoJson = localStorage.getItem('geoJson');
   if (geoJson) {
     geoJsonToMarkers(JSON.parse(geoJson));
   }
@@ -233,22 +228,22 @@ const lc = L.control
     locateOptions: { maxZoom: 14 }
   })
   .addTo(map);
-map.on("locationfound", e => {
+map.on('locationfound', e => {
   userLocation = e.latlng;
 });
 lc.start();
 
-map.on("moveend", e => {
+map.on('moveend', e => {
   const c = e.target.getCenter();
-  if (c) localStorage.setItem("location", JSON.stringify([c.lat, c.lng]));
+  if (c) localStorage.setItem('location', JSON.stringify([c.lat, c.lng]));
 });
 
-map.on("zoomend", e => {
+map.on('zoomend', e => {
   const z = e.target.getZoom();
-  if (z) localStorage.setItem("zoom", z);
+  if (z) localStorage.setItem('zoom', z);
 });
 
 if (navigator.serviceWorker)
-  navigator.serviceWorker.register("/sw.js").then(function() {
-    console.log("Service Worker Registered");
+  navigator.serviceWorker.register('/sw.js').then(function() {
+    console.log('Service Worker Registered');
   });
