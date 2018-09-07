@@ -141,10 +141,10 @@ const helpModal = function(ev) {
   <h3>Legend</h3>
   <p class="legend">
   <img src="fixit.svg"> <a href="https://www.google.com/search?tbm=isch&q=fixit%20stand">Fixit stands</a>
-    <br>
-  <img src="pump+shop.svg"> Bike pump outside a bike shop
   <br>
-  <img src="pump.svg"> Other pulicly accessible bike pump
+  <img src="pump.svg"> Pulicly accessible bike pump
+  <br>
+  <img src="pump+shop.svg"> Bike pump outside a bike shop
   </p>
   <h3>Source</h3>
   <p>BikeHero is open source and on <a href="https://github.com/dschep/bikehero">Github</a>.</p>
