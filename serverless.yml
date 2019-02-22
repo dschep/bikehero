@@ -1,10 +1,13 @@
 service:
   name: bikehero
   awsKmsKeyArn: arn:aws:kms:us-east-1:704903784842:key/49b8e145-0e10-4e99-a899-c4cdfe07880c
+tenant: personal
+app: bikehero
 
 provider:
   name: aws
-  runtime: python3.6
+  runtime: python3.7
+  credentials: ${secrets:aws-creds}
   stage: dev
   region: us-east-1
 
@@ -42,7 +45,7 @@ custom:
 plugins:
   - serverless-python-requirements
   - serverless-finch
-
+  - '@serverless/enterprise-plugin'
 functions:
   get_stands:
     handler: bikehero/handlers.get_stands

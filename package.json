@@ -8,10 +8,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "serverless-python-requirements": "^4.0.1",
-    "serverless-finch": "^2.1.2",
+    "@serverless/enterprise-plugin": "^0.2.0",
     "eslint": "*",
-    "prettier": "*"
+    "prettier": "*",
+    "serverless-finch": "^2.1.2",
+    "serverless-python-requirements": "^4.0.1"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
