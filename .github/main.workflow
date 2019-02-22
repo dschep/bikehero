@@ -15,11 +15,11 @@ action "npm install" {
 }
 
 action "serverless client deploy" {
-  uses = "serverless/github-action@master"
+  uses = "dschep/serverless-python-action@master"
   args = "deploy"
   needs = ["npm install"]
   secrets = ["SERVERLESS_ACCESS_KEY"]
-  }
+}
 
 action "serverless deploy" {
   uses = "dschep/serverless-python-action@master"
