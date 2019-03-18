@@ -19,6 +19,9 @@ action "serverless client deploy" {
   args = "deploy"
   needs = ["npm install"]
   secrets = ["SERVERLESS_ACCESS_KEY"]
+  env = {
+    SLS_DEBUG = "t"
+  }
 }
 
 action "serverless deploy" {
@@ -26,4 +29,7 @@ action "serverless deploy" {
   args = "deploy"
   needs = ["serverless client deploy"]
   secrets = ["SERVERLESS_ACCESS_KEY"]
+  env = {
+    SLS_DEBUG = "t"
+  }
 }
