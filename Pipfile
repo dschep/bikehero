@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 
 lambda-decorators = "*"
-"psycopg2" = "*"
+"psycopg2-binary" = "*"
 postgis = "*"
 attrs = "*"
 requests = "*"
