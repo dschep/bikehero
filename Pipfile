@@ -13,7 +13,7 @@ postgis = "*"
 attrs = "*"
 requests = "*"
 "boto3" = "*"
-records = "*"
+records = "==0.5.2"
 
 
 [dev-packages]
