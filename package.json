@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@serverless/enterprise-plugin": "^0.2.1",
+    "@serverless/enterprise-plugin": "latest",
     "eslint": "*",
     "prettier": "*",
     "serverless-finch": "^2.1.2",
