@@ -7,7 +7,6 @@ app: bikehero
 provider:
   name: aws
   runtime: python3.7
-  #credentials: ${secrets:aws-creds}
   stage: dev
   region: us-east-1
 
@@ -45,7 +44,6 @@ custom:
 plugins:
   - serverless-python-requirements
   - serverless-finch
-  #- '@serverless/enterprise-plugin'
 functions:
   get_stands:
     handler: bikehero/handlers.get_stands
