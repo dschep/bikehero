@@ -41,6 +41,8 @@ custom:
   client: # serverless-finch config
     bucketName: bikehero.io
     distributionFolder: static
+  pythonRequirements:
+    dockerizePip: non-linux
 
 plugins:
   - serverless-python-requirements
