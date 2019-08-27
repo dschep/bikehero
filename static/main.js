@@ -142,7 +142,7 @@ const helpModal = function(ev) {
   <img src="pump+shop.svg"> Bike pump outside a bike shop
   </p>
   <h3>Source</h3>
-  <p>BikeHero is open source and on <a href="https://github.com/dschep/bikehero">Github</a>.</p>
+  <p>BikeHero is built by <a href="https://twitter.com/schep_">Daniel Schep</a> and open source and on <a href="https://github.com/dschep/bikehero">Github</a>.</p>
     `;
   map.openModal({ element: modalNode });
   return false;
