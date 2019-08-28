@@ -137,7 +137,7 @@ const helpModal = function(ev) {
   <p class="legend">
   <img src="fixit.svg"> <a href="https://www.google.com/search?tbm=isch&q=fixit%20stand">Fixit stands</a>
   <br>
-  <img src="pump.svg"> Pulicly accessible bike pump
+  <img src="pump.svg"> Publicly accessible bike pump
   <br>
   <img src="pump+shop.svg"> Bike pump outside a bike shop
   </p>
