@@ -1,7 +1,7 @@
 service:
   name: bikehero
   awsKmsKeyArn: arn:aws:kms:us-east-1:704903784842:key/49b8e145-0e10-4e99-a899-c4cdfe07880c
-tenant: personal
+org: personal
 app: bikehero
 
 provider:
