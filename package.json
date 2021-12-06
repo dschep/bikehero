@@ -12,7 +12,7 @@
     "eslint": "*",
     "prettier": "*",
     "serverless-finch": "^2.1.2",
-    "serverless-python-requirements": "^4.0.1"
+    "serverless-python-requirements": "^5.2.2"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
