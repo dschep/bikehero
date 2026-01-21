@@ -11,7 +11,7 @@
     "@serverless/enterprise-plugin": "latest",
     "eslint": "*",
     "prettier": "*",
-    "serverless-finch": "^2.1.2",
+    "serverless-finch": "^4.0.0",
     "serverless-python-requirements": "^4.0.1"
   },
   "eslintConfig": {
